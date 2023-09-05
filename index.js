@@ -5,11 +5,14 @@ let userHasClicked = true;
 let factorOne = 0;
 let factorTwo = 0;
 let round = 0;
+let elapsedSeconds = 0;
+let startTime = 0;
 
 const progressElement = document.getElementById('progress');
 const startGameElement = document.getElementById('start-game');
 const endGameElement = document.getElementById('end-game');
 const questionElement = document.getElementById('question');
+const timeElement = document.getElementById('time');
 
 const resultOneElement = document.getElementById('result-one');
 const resultTwoElement = document.getElementById('result-two');
@@ -54,7 +57,7 @@ function evaluateAndScore(resultId) {
 
     evaluateAnswer(resultId);
 
-    setProgress(`Round ${round} of 3`);
+    setProgress(`Round ${round} of 10`);
 
     initQuestion();
     setQuestion();
@@ -64,13 +67,27 @@ function evaluateAndScore(resultId) {
 
     round++;
 
-    if (round > 3) {
-        setProgress(`You scored ${score} out of 3`);
+    if (round > 10) {
+        stopWatch();
+
+        initElapsedTime();
+        showElapsedTime();
+        setProgress(`You scored ${score} out of 10`);
+        
         hideQuestion();
         hideResultGroup();
         showEndGameButton();
     }
 
+}
+
+function initElapsedTime() {
+    timeElement.textContent = `Zeit: ${elapsedSeconds} Sekunden`;
+    timeElement.style.display = 'block';
+}
+
+function showElapsedTime() {
+    timeElement.style.display = 'block';
 }
 
 function showEndGameButton() {
@@ -93,7 +110,10 @@ function loadLandingPage() {
     hideProgress();
     hideQuestion();
     hideResultGroup();
+    hideTime();
 }
+
+function hideTime() { timeElement.style.display = 'none'; }
 
 function hideEndGameButton() { endGameElement.style.display = 'none'; }
 
@@ -110,11 +130,12 @@ function hideResultGroup() {
 }
 
 function startGame() {
+    startStopWatch();
     hideStartGameButton();
     resetScore();
 
     initProgress();
-    setProgress(`Round ${round} of 3`);
+    setProgress(`Round ${round} of 10`);
     showProgress();
 
     initQuestion();
@@ -123,6 +144,16 @@ function startGame() {
 
     initRandomResult();
     showResultGroup();
+}
+
+function startStopWatch() {
+    startTime = Date.now();
+}
+
+function stopWatch() {
+    let end = Date.now();
+    let elapsed = end - startTime;
+    elapsedSeconds = elapsed / 1000;
 }
 
 function hideStartGameButton() { startGameElement.style.display = 'none'; }
