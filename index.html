@@ -5,25 +5,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script defer src="index.js"></script>
+    <script type="text/javascript" src="./dom.js"></script>
+    <script type="text/javascript" src="./time.js"></script>
+    <script type="text/javascript" src="./index.js"></script>
+    <script type="text/javascript" src="./elements.js"></script>
+    <script type="text/javascript" src="./score.js"></script>
+    <script type="text/javascript" src="./progress.js"></script>
+    <script type="text/javascript" src="./solutions.js"></script>
+    <script type="text/javascript" src="./question.js"></script>
+
     <link rel="stylesheet" href="index.css">
 </head>
 
 <body onload="loadLandingPage()">
 
     <h1>Mathe-Quiz</h1>
-    <div id="progress"></div>
+    <div id="progress" style="display: none;"></div>
+    <div id="score" style="display: none;"></div>
+
 
     <button id="start-game">Start Game!</button>
-    <div id="time" hidden></div>
-    <button id="end-game" hidden>End Game!</button>
+    <div id="time" style="display: none;"></div>
+    <button id="end-game" style="display: none;">End Game!</button>
 
-    <div id="question"></div>
+    <div id="question" style="display: none;"></div>
 
     <div id="button-group">
-        <button id="result-one"></button>
-        <button id="result-two"></button>
-        <button id="result-three"></button>
+        <button id="result-one" style="display: none;"></button>
+        <button id="result-two" style="display: none;"></button>
+        <button id="result-three" style="display: none;"></button>
     </div>
 
 </body>
