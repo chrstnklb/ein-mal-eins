@@ -51,11 +51,11 @@ const endGame = () => {
     displayScore();
     displayTime();
     displayEndGameButton();
+    navigator.vibrate(500);
 }
 
 const displayEndGameButton = () => {
     showEndGameButton();
 }
-
 
 const refreshRound = () => { ++actualRound; }
